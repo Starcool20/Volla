@@ -1,0 +1,103 @@
+     html {
+            font-size: 16px;
+            height: 100%
+            width: 100%
+            margin: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFFFFF;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .linear10,
+        .linear22 {
+            width: 100%;
+            height: 10%; /* Adjust the percentage as needed */
+            box-sizing: border-box;
+        }
+
+        .linear10 {
+            background-color: #81c784;
+            padding: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+       .linear17 {
+            background-color: #212121;
+            padding: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .linear22 {
+            background-color: #212121;
+            padding: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            width: 30%; /* Adjust the percentage as needed */
+            height: 20%; /* Adjust the percentage as needed */
+            background-color: #81c784;
+            border: none;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        
+        .linearbutton{
+          margin-top: 10px;
+           display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .vote-section h {
+         color: #FFFFFF
+  }
+
+        .vote-section {
+            width: 100%;
+            height: 50%; /* Adjust the percentage as needed */
+            box-sizing: border-box;
+            background-color: #000000;
+            padding: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .display{
+          text-align: center;
+        }
+        
+        .display h2{
+          color: #03A9F4;
+          font-size: 12px;
+        }
+        
+        .edittext{
+          text-align: center;
+          margin-top:20px;
+        }
+        
+        .edittext input{
+          border-radius: 3px;
+        }
+
