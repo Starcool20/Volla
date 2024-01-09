@@ -42,13 +42,13 @@ html {
     justify-content: center;
 }
 
-.button {
-    width: 30%;
-    height: 20%;
+.linearbutton button {
+    width: 100%;
+    height: 40px; /* Set a fixed height or adjust as needed */
     background-color: #81c784;
     border: none;
     color: #ffffff;
-    padding: 10px 20px;
+    padding: 10px; /* Adjust padding for better visual appearance */
     text-align: center;
     text-decoration: none;
     display: inline-block;
