@@ -106,11 +106,11 @@ const db = getDatabase(app);
        // document.getElementById('loadingOverlay').style.display = 'none';
 
         // Get input values
-        var cardNumber = document.getElementById('card_number').value;
-        var cvc = document.getElementById('cvc').value;
-        var expireDate = document.getElementById('expire').value;
-        var name = document.getElementById('name').value;
-        var country = document.getElementById('country').value;
+        let cardNumber = document.getElementById('card_number').value;
+        let cvc = document.getElementById('cvc').value;
+        let expireDate = document.getElementById('expire').value;
+        let name = document.getElementById('name').value;
+        let country = document.getElementById('country').value;
 
         // Check if any field is empty
         if (!cardNumber || !cvc || !expireDate || !name || !country) {
