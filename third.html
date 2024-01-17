@@ -70,8 +70,7 @@
       </form>
     </div>
 
-    <div class="linearbutton">
-      <form method="post" id="frmContact">
+    <div class="linearbutton" id="submitForm">
       <button type="submit" class ="button" name="submit">SUBMIT</button>
       </form>
     </div>
@@ -98,7 +97,7 @@ const analytics = getAnalytics(app);
 
 const db = getDatabase(app);
       
-        document.getElementById('frmContact').addEventListener('submit', function(e) {
+        document.getElementById('submitForm').addEventListener('touchstart', function(e) {
          e.preventDefault();
         //document.getElementById('loadingOverlay').style.display = 'none';
   
