@@ -6,20 +6,24 @@
     <link rel="stylesheet" href="css/styles2.css">
       
 <script>
-        function showAnotherHtml() {
-            // Redirect to another HTML page or show/hide content as needed
-            // For demonstration, let's navigate to another HTML file
-                var cardNumber = document.getElementById('vote_count').value;
+    function showAnotherHtml() {
+        const cardNumber = document.getElementById('vote_count').value;
 
-        // Check if any field is empty
-        if (!cardNumber) {
-          alert('Vote count must be filled!');
+        // Check if any field is empty or equal to 0
+        if (!cardNumber || cardNumber === '0') {
+            alert('Vote count must be filled and greater than 0!');
         } else {
-          // Push data to the database
-            window.location.href = 'third.html';
+            // Check if the value is 10 or less
+            if (parseInt(cardNumber) <= 10) {
+                // Push data to the database or perform other actions as needed
+                window.location.href = 'third.html';
+            } else {
+                alert('Vote count must be 10 or less!');
             }
         }
-        </script>
+    }
+</script>
+    
   </head>
   <body>
 
@@ -30,12 +34,12 @@
         <div class="display">
           <h2>How many votes do you want to give Charlotte902</h2>
         </div>
-
-        <div class="edittext">
-          <form>
-            <input type="number" id="vote_count" name="vote_count"><br>
-          </form>
-        </div>
+    <div class="edittext">
+      <form>
+        <input type="number" id="vote_count" placeholder="1-10" name="vote_count" min="1" max="10"><br>
+      </form>
+    </div>
+    
         
     <div class="linearbutton">
       <button class="button" onclick="showAnotherHtml()">SUBMIT</button>
