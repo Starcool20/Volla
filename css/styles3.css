@@ -11,8 +11,6 @@
         .input.details2,
         .input.details3 {
             width: 100%;
-            margin-bottom: 20px;
-            box-sizing: border-box;
             display: flex;
             align-items: center;
             justify-content: center;
