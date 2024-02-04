@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "volla"
+    "site": "volla",
     "public": ".",
     "ignore": [
       "firebase.json",
