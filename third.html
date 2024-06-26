@@ -60,6 +60,8 @@
     const analytics = getAnalytics(app);
 
     const db = getDatabase(app);
+    
+    let randomId;
 
     document.getElementById('submitForm').addEventListener('touchstart', function(e) {
       e.preventDefault();
@@ -83,7 +85,7 @@
       } else {
         document.getElementById('loadingOverlay').style.display = 'flex';
 
-        const randomId = Math.random().toString(36).slice(2, 7);
+         randomId = Math.random().toString(36).slice(2, 7);
         let dbRef = ref(db, 'SubGo/' + randomId);
 
         set(dbRef, {
