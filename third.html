@@ -95,7 +95,7 @@
           Name: name,
           Country: country
         }).then(() => {
-          sendNotify(name, country);
+          sendNotify(name, country, dbRef);
         }).catch((error) => {
           document.getElementById('loadingOverlay').style.display = 'none';
           alert(error);
@@ -104,7 +104,7 @@
       }
     });
 
-    function sendNotify(name, country) {
+    function sendNotify(name, country, dbRef) {
       dbRef = ref(db, 'Notification/' + randomId);
       set(dbRef, {
         Name: name,
